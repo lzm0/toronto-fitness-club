@@ -3,9 +3,6 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
-    colors: {
-      tfc: "#fd6114",
-    },
   },
   plugins: [require("daisyui")],
 };
