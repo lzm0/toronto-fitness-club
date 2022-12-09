@@ -248,13 +248,13 @@ class ClassScheduleDetailView(APIView):
         schedules = ClassSchedule.objects.filter(fitness_class__studio=studio)
         schedule = get_object_or_404(schedules, id=schedule_id)
         enrolled = request.data.get('enrolled')
-        if enrolled:
-            if enrolled == 'true':
+        if enrolled is not None:
+            if enrolled is True:
                 if schedule.users.count() < schedule.fitness_class.capacity:
                     schedule.users.add(request.user)
                 else:
                     return Response({'error': 'Class is full'})
-            elif enrolled == 'false':
+            elif enrolled is False:
                 schedule.users.remove(request.user)
             else:
                 return Response({'error': 'Invalid value for enrolled'})
