@@ -161,8 +161,6 @@ class UserCardView(APIView):
         old_card = request.user.card
         request.user.card = serializer.instance
         request.user.save()
-        if old_card:
-            old_card.delete()
         return Response(serializer.data, status=201)
 
     def delete(self, request):
