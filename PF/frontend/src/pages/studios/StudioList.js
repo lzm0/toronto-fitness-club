@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 function getDistanceInKm(lat1, lon1, lat2, lon2) {
@@ -25,6 +26,14 @@ function StudioList({
   setSelectedStudio,
   myPosition,
 }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (selectedStudio) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [selectedStudio]);
+
   return studios.length > 0 ? (
     <ul>
       {studios.map((studio) => (
@@ -35,6 +44,7 @@ function StudioList({
             (studio === selectedStudio ? " bg-base-300" : "")
           }
           onClick={() => setSelectedStudio(studio)}
+          ref={studio === selectedStudio ? ref : null}
         >
           <div className="flex flex-col md:flex-row gap-2 justify-between items-stretch md:items-end">
             <div>
