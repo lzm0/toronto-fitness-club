@@ -6,7 +6,6 @@ function Subscription() {
   const [planId, setPlanId] = useState(null);
   const [planStartDate, setPlanStartDate] = useState(null);
   const [plan, setPlan] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     fetch(`http://${window.location.hostname}:8000/api/profile/plan/`, {

@@ -34,7 +34,7 @@ function StudioDetail() {
   return studio ? (
     <div className="flex justify-center p-4 bg-base-200">
       <div className="flex flex-col gap-4 grow justify-items-stretch max-w-xl min-w-0">
-        <div className="card bg-base-100 overflow-hidden">
+        <div className="card bg-base-100 overflow-hidden isolate">
           <StudioCarousel images={studio.images} />
         </div>
         <div className="card bg-base-100">
