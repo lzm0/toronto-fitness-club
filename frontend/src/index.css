@@ -6,6 +6,7 @@
 
 html {
   font-family: "Figtree", sans-serif;
+  @apply bg-primary !important;
 }
 
 th {
