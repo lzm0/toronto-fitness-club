@@ -37,12 +37,12 @@ function StudioDetail() {
                 ))}
               </div>
             </div>
-            <div className="flex md:flex-col gap-2">
+            <div className="flex">
               <a
                 href={`https://www.google.com/maps/dir/?api=1&destination=${studio.latitude},${studio.longitude}`}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-sm rounded-full flex-1"
+                className="btn btn-sm rounded-full grow"
               >
                 Directions
               </a>
