@@ -31,7 +31,7 @@ function Account() {
 
   return (
     user && (
-      <div className="flex justify-center p-4 bg-primary">
+      <div className="flex justify-center p-4">
         <div className="flex flex-col grow justify-items-stretch gap-4 max-w-md min-w-0">
           <Profile user={user} />
           <Subscription />

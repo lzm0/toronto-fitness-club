@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import StudioCarousel from "./StudioCarousel";
+import StudioClasses from "./StudioClasses";
 
 export function loader({ params }) {
   return fetch(
@@ -15,21 +15,6 @@ export function loader({ params }) {
 
 function StudioDetail() {
   const studio = useLoaderData();
-  const [schedules, setSchedules] = useState([]);
-  const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    fetch(
-      `http://${window.location.hostname}:8000/api/studios/${studio.id}/schedules/`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => setSchedules(data.results));
-  }, [studio]);
 
   return studio ? (
     <div className="flex justify-center p-4 bg-base-200">
@@ -67,6 +52,7 @@ function StudioDetail() {
         <div className="card bg-base-100">
           <div className="card-body">
             <h3 className="card-title">Classes</h3>
+            <StudioClasses studio={studio} />
           </div>
         </div>
       </div>

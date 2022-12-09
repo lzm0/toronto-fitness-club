@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Signup() {
   return (
-    <div className="py-10 flex items-center justify-center bg-primary">
+    <div className="py-10 flex items-center justify-center">
       <div className="card bg-base-100">
         <div className="card-body">
           <h1 className="card-title">Create your account</h1>

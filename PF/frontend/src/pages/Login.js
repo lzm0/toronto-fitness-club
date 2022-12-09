@@ -34,7 +34,7 @@ function Login() {
   };
 
   return (
-    <div className="h-screen -translate-y-12 flex items-center justify-center bg-primary">
+    <div className="h-screen -translate-y-12 flex items-center justify-center">
       <div className="card bg-base-100">
         <div className="card-body">
           <h1 className="card-title">Welcome back</h1>

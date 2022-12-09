@@ -61,7 +61,7 @@ function Studios() {
   }, [searchParams]);
 
   return (
-    <div className="flex justify-center p-4 bg-primary">
+    <div className="flex justify-center p-4">
       <div className="flex flex-col gap-4 grow justify-items-stretch max-w-xl min-w-0">
         <StudioSearch
           searchParams={searchParams}

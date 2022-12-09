@@ -50,7 +50,7 @@ function StudioList({
                       studio.latitude,
                       studio.longitude
                     ).toFixed(2) + " km away"
-                  : "Getting distance..."}
+                  : "Calculating distance..."}
               </div>
               <div className="flex flex-wrap gap-1 mt-2">
                 {studio.amenities.map((amenity) => (

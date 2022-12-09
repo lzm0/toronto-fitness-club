@@ -4,12 +4,10 @@ import Navbar from "../components/Navbar";
 
 function Root() {
   return (
-    <div className="bg-primary">
+    <div>
       <ScrollRestoration />
-      <div className="">
-        <Navbar />
-        <Outlet />
-      </div>
+      <Navbar />
+      <Outlet />
       <Footer />
     </div>
   );
