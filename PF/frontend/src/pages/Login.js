@@ -29,7 +29,7 @@ function Login() {
         }
       })
       .then(() => {
-        navigate(-2);
+        navigate(-1);
       }, []);
   };
 

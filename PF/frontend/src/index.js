@@ -12,6 +12,7 @@ import Signup from "./pages/Signup";
 
 import AuthRoute from "./components/AuthRoute";
 import Plans from "./pages/plans/Plans";
+import Studios from "./pages/studios/Studios";
 
 const router = createBrowserRouter([
   {
@@ -46,14 +47,18 @@ const router = createBrowserRouter([
           </AuthRoute>
         ),
       },
+      {
+        path: "studios",
+        element: (
+          <AuthRoute>
+            <Studios />
+          </AuthRoute>
+        ),
+      },
     ],
     errorElement: <ErrorPage />,
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+root.render(<RouterProvider router={router} />);
