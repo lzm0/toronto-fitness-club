@@ -153,10 +153,10 @@ class FitnessClassDetailView(APIView):
         classes = FitnessClass.objects.filter(studio=studio)
         fitness_class = get_object_or_404(classes, id=class_id)
         enrolled = request.data.get('enrolled')
-        if enrolled:
-            if enrolled == 'true':
+        if enrolled is not None:
+            if enrolled is True:
                 fitness_class.users.add(request.user)
-            elif enrolled == 'false':
+            elif enrolled is False:
                 fitness_class.users.remove(request.user)
             else:
                 return Response({'error': 'Invalid value for enrolled'})
