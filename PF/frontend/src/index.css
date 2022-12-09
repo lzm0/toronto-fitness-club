@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.card-section {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap");
+
+html {
+  font-family: "Figtree", sans-serif;
 }

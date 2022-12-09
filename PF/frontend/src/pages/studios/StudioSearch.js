@@ -33,12 +33,12 @@ function StudioSearch({ searchParams, setSearchParams }) {
         <input
           type="text"
           placeholder="Search by studio name..."
-          className="input grow input-primary"
+          className="input grow"
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
         <div
-          className="btn btn-primary gap-1"
+          className="btn btn-secondary gap-1"
           onClick={() => setModalVisibility(true)}
         >
           <AdjustmentsHorizontalIcon className="h-5 w-5" />

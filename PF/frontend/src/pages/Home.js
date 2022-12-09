@@ -2,22 +2,27 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div className="hero grow">
-      <div className="hero-content text-center">
-        <div className="max-w-md">
-          <h1 className="text-5xl font-black">Toronto Fitness Club</h1>
-          <p className="py-6">
-            Toronto Fitness Club (TFC) is a fitness club that offers a variety
-            of fitness classes and programs. We are proud to be a part of the
-            Toronto community and we are committed to providing our members with
-            the best possible fitness experience.
-          </p>
-          <Link to="/plans" className="btn btn-primary">
-            See Plans
-          </Link>
+    <main className="h-screen w-screen bg-primary">
+      <div className="hero h-screen">
+        <div className="hero-content -translate-y-10">
+          <div className="max-w-md flex flex-col">
+            <h1 className="text-6xl font-black w-84 text-white text-clip overflow-hidden">
+              Nourish your body, mind, and soul
+            </h1>
+            <p className="py-6 text-white">
+              Toronto Fitness Club (TFC) offers expert trainers, top-of-the-line
+              facilities, and a wide range of fitness classes to help our
+              members achieve their health and wellness goals. Join our
+              community and discover a new level of vitality and happiness.
+              Welcome to TFC - where fitness meets wellness.
+            </p>
+            <Link to="/plans" className="btn btn-secondary">
+              Join Now
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

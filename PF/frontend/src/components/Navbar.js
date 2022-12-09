@@ -1,4 +1,7 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import {
+  GlobeAmericasIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/solid";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
@@ -8,20 +11,17 @@ function Navbar() {
       <div className="navbar-start"></div>
       <div className="navbar-center">
         <Link to="/" className="btn btn-ghost normal-case text-xl font-black">
-          Toronto Fitness Club
+          <GlobeAmericasIcon className="w-5 h-5 mr-1" />
+          TFC
         </Link>
       </div>
       <div className="navbar-end">
-        <div className="tooltip tooltip-left" data-tip="Find Studios">
-          <Link to="/studios" className="btn btn-ghost btn-circle">
-            <MagnifyingGlassIcon className="w-5 h-5" />
-          </Link>
-        </div>
-        <div className="tooltip tooltip-left" data-tip="My Account">
-          <Link to="/account" className="btn btn-ghost btn-circle">
-            <UserCircleIcon className="w-5 h-5" />
-          </Link>
-        </div>
+        <Link to="/studios" className="btn btn-ghost btn-circle">
+          <MagnifyingGlassIcon className="w-5 h-5" />
+        </Link>
+        <Link to="/account" className="btn btn-ghost btn-circle">
+          <UserCircleIcon className="w-5 h-5" />
+        </Link>
       </div>
     </nav>
   );

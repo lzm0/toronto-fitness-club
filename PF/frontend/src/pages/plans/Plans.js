@@ -50,7 +50,7 @@ function Plans() {
 
   return (
     plans && (
-      <div className="hero grow">
+      <div className="hero h-screen">
         <div
           className={
             "modal modal-bottom sm:modal-middle" +

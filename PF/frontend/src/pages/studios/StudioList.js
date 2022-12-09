@@ -40,6 +40,7 @@ function StudioList({
             <div>
               <div className="font-bold">{studio.name}</div>
               <div className="opacity-60">{studio.address}</div>
+              <div className="opacity-60">{studio.postal_code}</div>
               <div className="opacity-60">{studio.phone_number}</div>
               {myPosition && (
                 <div className="opacity-60">
@@ -64,6 +65,7 @@ function StudioList({
               <a
                 href={`https://www.google.com/maps/dir/?api=1&destination=${studio.latitude},${studio.longitude}`}
                 target="_blank"
+                rel="noreferrer"
                 className="btn btn-outline btn-sm rounded-full flex-1"
               >
                 Directions

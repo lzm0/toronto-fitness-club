@@ -11,7 +11,7 @@ function LogoutButton() {
   };
 
   return (
-    <button className="btn btn-ghost" onClick={logout}>
+    <button className="btn btn-ghost text-white" onClick={logout}>
       <ArrowLeftOnRectangleIcon className="w-5 h-5 mr-1" />
       Log out
     </button>

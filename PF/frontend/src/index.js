@@ -13,6 +13,9 @@ import Signup from "./pages/Signup";
 import AuthRoute from "./components/AuthRoute";
 import Plans from "./pages/plans/Plans";
 import Studios from "./pages/studios/Studios";
+import StudioDetail, {
+  loader as studioLoader,
+} from "./pages/studios/StudioDetail";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +57,15 @@ const router = createBrowserRouter([
             <Studios />
           </AuthRoute>
         ),
+      },
+      {
+        path: "studios/:id",
+        element: (
+          <AuthRoute>
+            <StudioDetail />
+          </AuthRoute>
+        ),
+        loader: studioLoader,
       },
     ],
     errorElement: <ErrorPage />,

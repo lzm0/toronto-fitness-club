@@ -34,7 +34,7 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-screen bg-primary">
       <div className="card bg-base-100">
         <div className="card-body">
           <h1 className="card-title">Welcome back</h1>

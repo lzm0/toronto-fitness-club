@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import StudioList from "./StudioList";
 import StudioMap from "./StudioMap";
 import StudioSearch from "./StudioSearch";
 
 function Studios() {
-  const navigate = useNavigate();
-
   const [studios, setStudios] = useState([]);
   const [selectedStudio, setSelectedStudio] = useState(null);
   const [myPosition, setMyPosition] = useState(null);
@@ -20,11 +18,11 @@ function Studios() {
       const lng = position.coords.longitude;
       setMyPosition({ lat, lng });
       setCenter({ lat, lng });
-      setSearchParams({
+      setSearchParams((searchParams) => ({
         ...searchParams,
         latitude: lat,
         longitude: lng,
-      });
+      }));
     });
   }, []);
 
@@ -53,13 +51,13 @@ function Studios() {
   }, [searchParams]);
 
   return (
-    <div className="flex justify-center p-4">
+    <div className="flex justify-center p-4 bg-primary">
       <div className="flex flex-col gap-4 grow justify-items-stretch max-w-xl min-w-0">
         <StudioSearch
           searchParams={searchParams}
           setSearchParams={setSearchParams}
         />
-        <div className="card bg-base-100 overflow-scroll max-h-96">
+        <div className="card bg-base-100 overflow-y-scroll max-h-96">
           <StudioList
             studios={studios}
             selectedStudio={selectedStudio}
