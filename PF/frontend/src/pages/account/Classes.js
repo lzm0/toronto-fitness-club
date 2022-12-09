@@ -108,7 +108,9 @@ function Classes() {
               )}
             </div>
           ) : (
-            <div className="italic p-8 text-center">No classes enrolled.</div>
+            <div className="italic p-8 text-center">
+              You have not signed up for any classes yet.
+            </div>
           )}
         </div>
       </div>
