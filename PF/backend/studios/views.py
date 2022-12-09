@@ -185,7 +185,7 @@ class ClassScheduleListView(APIView, PageNumberPagination):
     def get(self, request, studio_id):
         studio = get_object_or_404(Studio, id=studio_id)
         classes = FitnessClass.objects.filter(studio=studio)
-        queryset = ClassSchedule.objects.filter(fitness_class__in=classes)
+        queryset = ClassSchedule.objects.filter(fitness_class__in=classes).order_by('start_time')
         queryset = queryset.filter(start_time__gte=timezone.now())
 
         class_name = self.request.query_params.get('name')
