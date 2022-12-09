@@ -43,15 +43,12 @@ class FitnessClassSerializer(serializers.ModelSerializer):
 
 class ClassScheduleSerializer(serializers.ModelSerializer):
     enrolled = serializers.SerializerMethodField()
-    class_id = serializers.SerializerMethodField()
+    fitness_class = FitnessClassSerializer(read_only=True)
 
     class Meta:
         model = ClassSchedule
-        fields = ('id', 'class_id', 'start_time', 'end_time', 'enrolled')
+        fields = ('id', 'fitness_class', 'start_time', 'end_time', 'enrolled')
 
     def get_enrolled(self, obj):
         user = self.context['request'].user
         return user in obj.users.all() or user in obj.fitness_class.users.all()
-
-    def get_class_id(self, obj):
-        return obj.fitness_class.id
