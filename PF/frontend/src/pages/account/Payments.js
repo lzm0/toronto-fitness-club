@@ -76,22 +76,24 @@ function Payments({ card }) {
             </tbody>
           </table>
         </div>
-        <div className="btn-group grid grid-cols-2 rounded-full overflow-hidden">
-          <button
-            className="btn btn-sm"
-            disabled={!previousPage}
-            onClick={goToPreviousPage}
-          >
-            Previous
-          </button>
-          <button
-            className="btn btn-sm"
-            disabled={!nextPage}
-            onClick={goToNextPage}
-          >
-            Next
-          </button>
-        </div>
+        {(previousPage || nextPage) && (
+          <div className="btn-group grid grid-cols-2 rounded-full overflow-hidden">
+            <button
+              className="btn btn-sm"
+              disabled={!previousPage}
+              onClick={goToPreviousPage}
+            >
+              Previous
+            </button>
+            <button
+              className="btn btn-sm"
+              disabled={!nextPage}
+              onClick={goToNextPage}
+            >
+              Next
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

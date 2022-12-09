@@ -1,6 +1,7 @@
 import { PlusIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import formatScheduleRange from "../../helper/ScheduleFormatter";
 
 function setClass(studio_id, class_id, enrolled) {
   return fetch(
@@ -30,7 +31,7 @@ function setSchedule(studio_id, schedule_id, enrolled) {
   );
 }
 
-function ScheduleActionButton({ studio, schedule, timeslot }) {
+function ScheduleActionButton({ studio, schedule }) {
   const navigate = useNavigate();
 
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -71,7 +72,7 @@ function ScheduleActionButton({ studio, schedule, timeslot }) {
         </div>
         <div
           className={
-            "modal modal-bottom sm:modal-middle" +
+            "modal modal-bottom sm:modal-middle overflow-visible" +
             (modalVisibility ? " modal-open" : "")
           }
         >
@@ -83,7 +84,7 @@ function ScheduleActionButton({ studio, schedule, timeslot }) {
               schedule.enrolled ? "drop " : "enroll "
             } ${schedule.fitness_class.name} at ${
               studio.name
-            } for the timeslot ${timeslot}?`}</p>
+            } for the timeslot ${formatScheduleRange(schedule)}?`}</p>
             <div className="form-control">
               <label className="label cursor-pointer justify-start gap-4">
                 <span className="label-text">
@@ -107,10 +108,7 @@ function ScheduleActionButton({ studio, schedule, timeslot }) {
               >
                 Cancel
               </div>
-              <div
-                className="btn btn-primary"
-                onClick={() => handleScheduleAction()}
-              >
+              <div className="btn btn-primary" onClick={handleScheduleAction}>
                 Confirm
               </div>
             </div>

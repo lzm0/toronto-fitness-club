@@ -7,3 +7,7 @@
 html {
   font-family: "Figtree", sans-serif;
 }
+
+th {
+  @apply bg-base-100 !important;
+}
