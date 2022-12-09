@@ -8,7 +8,7 @@ function Subscription() {
   const [plan, setPlan] = useState(null);
 
   useEffect(() => {
-    fetch(`http://${window.location.hostname}:8000/api/profile/plan/`, {
+    fetch(`/api/profile/plan/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
@@ -22,14 +22,11 @@ function Subscription() {
 
   useEffect(() => {
     if (planId) {
-      fetch(
-        `http://${window.location.hostname}:8000/api/subscriptions/plans/${planId}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-        }
-      )
+      fetch(`/api/subscriptions/plans/${planId}/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      })
         .then((response) => response.json())
         .then(setPlan);
     }

@@ -9,7 +9,7 @@ function DeleteCard() {
 
   const handleDelete = (event) => {
     event.preventDefault();
-    fetch(`http://${window.location.hostname}:8000/api/profile/card/`, {
+    fetch(`/api/profile/card/`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,

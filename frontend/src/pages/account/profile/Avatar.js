@@ -7,7 +7,7 @@ function Avatar({ user }) {
   const handleUpload = (event) => {
     const formData = new FormData();
     formData.append("avatar", event.target.files[0]);
-    fetch(`http://${window.location.hostname}:8000/api/profile/`, {
+    fetch(`/api/profile/`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,

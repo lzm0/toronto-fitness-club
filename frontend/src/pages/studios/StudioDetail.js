@@ -5,14 +5,11 @@ import StudioClasses from "./StudioClasses";
 import StudioClassesSearch from "./StudioClassesSearch";
 
 export function loader({ params }) {
-  return fetch(
-    `http://${window.location.hostname}:8000/api/studios/${params.id}/`,
-    {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-      },
-    }
-  ).then((response) => response.json());
+  return fetch(`/api/studios/${params.id}/`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+    },
+  }).then((response) => response.json());
 }
 
 function StudioDetail() {

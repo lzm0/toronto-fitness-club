@@ -21,7 +21,7 @@ function Signup() {
     const first_name = event.target.first_name.value;
     const last_name = event.target.last_name.value;
     const phone_number = event.target.phone_number.value;
-    fetch(`http://${window.location.hostname}:8000/api/profile/`, {
+    fetch(`/api/profile/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

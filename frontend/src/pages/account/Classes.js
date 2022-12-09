@@ -12,7 +12,7 @@ function Classes() {
   const [selectedSchedule, setSelectedSchedule] = useState(null);
 
   useEffect(() => {
-    fetch(`http://${window.location.hostname}:8000/api/profile/schedules/`, {
+    fetch(`/api/profile/schedules/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },

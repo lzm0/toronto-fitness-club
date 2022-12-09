@@ -6,7 +6,7 @@ function PaymentMethod() {
   const [card, setCard] = useState(null);
 
   useEffect(() => {
-    fetch(`http://${window.location.hostname}:8000/api/profile/card/`, {
+    fetch(`/api/profile/card/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },

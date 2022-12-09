@@ -10,7 +10,7 @@ function UpdateCard() {
   const handleSave = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    fetch(`http://${window.location.hostname}:8000/api/profile/card/`, {
+    fetch(`/api/profile/card/`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,

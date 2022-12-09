@@ -6,7 +6,7 @@ function Payments() {
   const [previousPage, setPreviousPage] = useState(null);
 
   useEffect(() => {
-    fetch(`http://${window.location.hostname}:8000/api/profile/payments/`, {
+    fetch(`/api/profile/payments/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },

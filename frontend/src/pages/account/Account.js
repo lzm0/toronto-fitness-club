@@ -10,7 +10,7 @@ function Account() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch(`http://${window.location.hostname}:8000/api/profile/`, {
+    fetch(`/api/profile/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },

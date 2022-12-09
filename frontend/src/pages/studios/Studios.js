@@ -46,7 +46,7 @@ function Studios() {
   const fetchPage = useCallback(
     (page) => {
       fetch(
-        `http://${window.location.hostname}:8000/api/studios/?page=${page}${
+        `/api/studios/?page=${page}${
           Object.keys(searchParams).length > 0
             ? `&${new URLSearchParams(searchParams)}`
             : ""

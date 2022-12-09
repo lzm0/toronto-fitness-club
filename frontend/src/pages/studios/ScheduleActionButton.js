@@ -4,31 +4,25 @@ import { useNavigate } from "react-router-dom";
 import formatScheduleRange from "../../helper/ScheduleFormatter";
 
 function setClass(studio_id, class_id, enrolled) {
-  return fetch(
-    `http://${window.location.hostname}:8000/api/studios/${studio_id}/classes/${class_id}/`,
-    {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ enrolled }),
-    }
-  );
+  return fetch(`/api/studios/${studio_id}/classes/${class_id}/`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ enrolled }),
+  });
 }
 
 function setSchedule(studio_id, schedule_id, enrolled) {
-  return fetch(
-    `http://${window.location.hostname}:8000/api/studios/${studio_id}/schedules/${schedule_id}/`,
-    {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ enrolled }),
-    }
-  );
+  return fetch(`/api/studios/${studio_id}/schedules/${schedule_id}/`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ enrolled }),
+  });
 }
 
 function ScheduleActionButton({ studio, schedule }) {

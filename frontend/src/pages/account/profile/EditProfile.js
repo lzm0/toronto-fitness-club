@@ -10,7 +10,7 @@ function EditProfile({ user }) {
   const handleSave = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    fetch(`http://${window.location.hostname}:8000/api/profile/`, {
+    fetch(`/api/profile/`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,

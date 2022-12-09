@@ -12,14 +12,14 @@ function Plans() {
   const [modalVisibility, setModalVisibility] = useState(false);
 
   useEffect(() => {
-    fetch(`http://${window.location.hostname}:8000/api/subscriptions/plans/`, {
+    fetch(`/api/subscriptions/plans/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
     })
       .then((response) => response.json())
       .then((data) => setPlans(data.results));
-    fetch(`http://${window.location.hostname}:8000/api/profile/plan/`, {
+    fetch(`/api/profile/plan/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
@@ -30,14 +30,14 @@ function Plans() {
 
   const handlePlanSelect = () => {
     if (selectedPlan.id === myPlan.plan) {
-      fetch(`http://${window.location.hostname}:8000/api/profile/plan/`, {
+      fetch(`/api/profile/plan/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
         method: "DELETE",
       }).then(() => navigate(0));
     } else {
-      fetch(`http://${window.location.hostname}:8000/api/profile/plan/`, {
+      fetch(`/api/profile/plan/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           "Content-Type": "application/json",

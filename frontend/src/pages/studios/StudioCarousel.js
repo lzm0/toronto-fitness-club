@@ -13,10 +13,7 @@ function StudioCarousel({ images }) {
               id={`slide-${index}`}
               className="carousel-item relative w-full"
             >
-              <img
-                src={`http://${window.location.hostname}:8000/${url}`}
-                alt=""
-              />
+              <img src={`/${url}`} alt="" />
               <div className="absolute flex justify-between -translate-y-1/2 left-5 right-5 top-1/2 opacity-80">
                 <button
                   className="btn btn-circle"

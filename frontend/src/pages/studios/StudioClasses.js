@@ -10,9 +10,7 @@ function StudioClasses({ studio, searchParams }) {
   const fetchPage = useCallback(
     (page) => {
       fetch(
-        `http://${window.location.hostname}:8000/api/studios/${
-          studio.id
-        }/schedules/?page=${page}${
+        `/api/studios/${studio.id}/schedules/?page=${page}${
           Object.keys(searchParams).length > 0
             ? `&${new URLSearchParams(searchParams)}`
             : ""

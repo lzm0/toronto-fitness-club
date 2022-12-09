@@ -9,7 +9,7 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://${window.location.hostname}:8000/api/login/`, {
+    fetch(`/api/login/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
