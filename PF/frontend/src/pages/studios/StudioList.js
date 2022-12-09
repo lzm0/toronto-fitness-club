@@ -82,7 +82,7 @@ function StudioList({
     </ul>
   ) : (
     <div className="italic p-8 text-center">
-      No studios found. Try adjusting your search parameters.
+      Sorry, we couldn't find any studios. Try adjusting your search criteria.
     </div>
   );
 }

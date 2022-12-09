@@ -67,21 +67,27 @@ function StudioClasses({ studio, searchParams }) {
 
   return (
     <div className="flex flex-col">
-      {schedules.map((schedule, index) => {
-        return (
-          schedule.fitness_class && (
-            <div key={schedule.id}>
-              <div className="flex flex-col md:flex-row gap-2 justify-between items-stretch md:items-end">
-                <ScheduleDetail schedule={schedule} />
-                <ScheduleActionButton studio={studio} schedule={schedule} />
+      {schedules.length > 0 ? (
+        schedules.map((schedule, index) => {
+          return (
+            schedule.fitness_class && (
+              <div key={schedule.id}>
+                <div className="flex flex-col md:flex-row gap-2 justify-between items-stretch md:items-end">
+                  <ScheduleDetail schedule={schedule} />
+                  <ScheduleActionButton studio={studio} schedule={schedule} />
+                </div>
+                {index !== schedules.length - 1 && (
+                  <div className="divider"></div>
+                )}
               </div>
-              {index !== schedules.length - 1 && (
-                <div className="divider"></div>
-              )}
-            </div>
-          )
-        );
-      })}
+            )
+          );
+        })
+      ) : (
+        <div className="italic p-8 text-center">
+          Sorry, we couldn't find any class schedules for this studio.
+        </div>
+      )}
       {isLoading && (
         <div className="flex justify-center">
           <div className="loading btn btn-ghost">Loading</div>

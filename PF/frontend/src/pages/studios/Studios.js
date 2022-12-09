@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import StudioList from "./StudioList";
 import StudioMap from "./StudioMap";
@@ -9,6 +9,8 @@ function Studios() {
   const [selectedStudio, setSelectedStudio] = useState(null);
   const [myPosition, setMyPosition] = useState(null);
   const [searchParams, setSearchParams] = useState({});
+  const [nextPage, setNextPage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [center, setCenter] = useState({ lat: 43.6532, lng: -79.3832 });
   const [zoom, setZoom] = useState(12);
 
@@ -21,8 +23,8 @@ function Studios() {
         setCenter({ lat, lng });
         setSearchParams((searchParams) => ({
           ...searchParams,
-          latitude: lat,
-          longitude: lng,
+          lat: lat,
+          lon: lng,
         }));
       },
       (error) => {
@@ -41,22 +43,53 @@ function Studios() {
     setZoom(15);
   };
 
+  const fetchPage = useCallback(
+    (page) => {
+      fetch(
+        `http://${window.location.hostname}:8000/api/studios/?page=${page}${
+          Object.keys(searchParams).length > 0
+            ? `&${new URLSearchParams(searchParams)}`
+            : ""
+        }`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (page === 1) {
+            setStudios(data.results);
+          } else {
+            setStudios((studios) => [...studios, ...data.results]);
+          }
+          if (data.next) {
+            setNextPage(page + 1);
+          } else {
+            setNextPage(null);
+          }
+          setIsLoading(false);
+        });
+    },
+    [searchParams]
+  );
+
   useEffect(() => {
-    fetch(
-      `http://${window.location.hostname}:8000/api/studios/${
-        searchParams ? `?${new URLSearchParams(searchParams)}` : ""
-      }`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setStudios(data.results);
-      });
+    fetchPage(1);
   }, [searchParams]);
+
+  const handleScroll = (event) => {
+    if (
+      !isLoading &&
+      nextPage &&
+      event.target.scrollTop + event.target.clientHeight >=
+        event.target.scrollHeight
+    ) {
+      setIsLoading(true);
+      fetchPage(nextPage);
+    }
+  };
 
   return (
     <div className="flex justify-center p-4">
@@ -65,7 +98,10 @@ function Studios() {
           searchParams={searchParams}
           setSearchParams={setSearchParams}
         />
-        <div className="card bg-base-100 overflow-y-scroll max-h-96">
+        <div
+          className="card bg-base-100 overflow-y-scroll max-h-96"
+          onScroll={handleScroll}
+        >
           <StudioList
             studios={studios}
             selectedStudio={selectedStudio}
