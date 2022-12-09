@@ -1,7 +1,7 @@
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 
-function StudioSearch({ setSearchParams }) {
+function StudioSearch({ searchParams, setSearchParams }) {
   const [modalVisibility, setModalVisibility] = useState(false);
 
   const [name, setName] = useState("");
@@ -18,6 +18,7 @@ function StudioSearch({ setSearchParams }) {
   const handleSearch = (event) => {
     event.preventDefault();
     setSearchParams({
+      ...searchParams,
       name,
       amenities,
       classes,

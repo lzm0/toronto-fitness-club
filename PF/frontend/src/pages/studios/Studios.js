@@ -55,7 +55,10 @@ function Studios() {
   return (
     <div className="flex justify-center p-4">
       <div className="flex flex-col gap-4 grow justify-items-stretch max-w-xl min-w-0">
-        <StudioSearch setSearchParams={setSearchParams} />
+        <StudioSearch
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
         <div className="card bg-base-100 overflow-scroll max-h-96">
           <StudioList
             studios={studios}
