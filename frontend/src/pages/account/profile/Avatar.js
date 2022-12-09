@@ -29,10 +29,7 @@ function Avatar({ user }) {
       <div className={"avatar " + (user.avatar ? "" : "placeholder")}>
         {user.avatar ? (
           <div className="w-24 h-24 rounded-full overflow-hidden">
-            <img
-              src={`http://${window.location.hostname}:8000${user.avatar}`}
-              alt="avatar"
-            />
+            <img src={user.avatar} alt="avatar" />
           </div>
         ) : (
           <div className="w-24 h-24 bg-secondary text-secondary-content rounded-full">
