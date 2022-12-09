@@ -31,8 +31,8 @@ function Studios() {
         console.log(error);
       },
       {
-        enableHighAccuracy: false,
-        timeout: 5000,
+        enableHighAccuracy: true,
+        timeout: Infinity,
         maximumAge: Infinity,
       }
     );
