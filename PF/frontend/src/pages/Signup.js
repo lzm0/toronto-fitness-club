@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Signup() {
   return (
-    <div className="flex items-center justify-center bg-primary">
+    <div className="py-10 flex items-center justify-center bg-primary">
       <div className="card bg-base-100">
         <div className="card-body">
           <h1 className="card-title">Create your account</h1>
@@ -84,7 +84,7 @@ function Signup() {
               <input
                 type="submit"
                 value="Sign Up"
-                className="btn btn-primary"
+                className="btn btn-secondary"
               />
             </div>
             <div className="text-center">

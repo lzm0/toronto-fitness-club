@@ -76,7 +76,7 @@ function Payments({ card }) {
             </tbody>
           </table>
         </div>
-        <div className="btn-group grid grid-cols-2">
+        <div className="btn-group grid grid-cols-2 rounded-full overflow-hidden">
           <button
             className="btn btn-sm"
             disabled={!previousPage}

@@ -50,7 +50,7 @@ function Plans() {
 
   return (
     plans && (
-      <div className="hero h-screen">
+      <div className="hero h-screen bg-base-200">
         <div
           className={
             "modal modal-bottom sm:modal-middle" +
@@ -98,7 +98,7 @@ function Plans() {
           )}
         </div>
 
-        <div className="flex flex-col hero-content text-center gap-8">
+        <div className="-translate-y-12 flex flex-col hero-content text-center gap-8">
           <h1 className="text-4xl font-bold">Membership Plans</h1>
           <div className="stats">
             {plans.map((plan) => (

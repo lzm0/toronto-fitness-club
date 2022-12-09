@@ -4,9 +4,11 @@ import Navbar from "../components/Navbar";
 
 function Root() {
   return (
-    <div className="flex flex-col bg-base-primary w-screen min-h-screen">
-      <Navbar />
-      <Outlet />
+    <div className="bg-primary">
+      <div className="min-h-screen">
+        <Navbar />
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

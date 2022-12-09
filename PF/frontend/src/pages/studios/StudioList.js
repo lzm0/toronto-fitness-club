@@ -42,18 +42,17 @@ function StudioList({
               <div className="opacity-60">{studio.address}</div>
               <div className="opacity-60">{studio.postal_code}</div>
               <div className="opacity-60">{studio.phone_number}</div>
-              {myPosition && (
-                <div className="opacity-60">
-                  {getDistanceInKm(
-                    myPosition.lat,
-                    myPosition.lng,
-                    studio.latitude,
-                    studio.longitude
-                  ).toFixed(2)}{" "}
-                  km away
-                </div>
-              )}
-              <div className="flex flex-wrap gap-1 my-2">
+              <div className="opacity-60">
+                {myPosition
+                  ? getDistanceInKm(
+                      myPosition.lat,
+                      myPosition.lng,
+                      studio.latitude,
+                      studio.longitude
+                    ).toFixed(2) + " km away"
+                  : "Getting distance..."}
+              </div>
+              <div className="flex flex-wrap gap-1 mt-2">
                 {studio.amenities.map((amenity) => (
                   <div key={amenity.type} className="badge badge-secondary">
                     {amenity.type}
@@ -66,7 +65,7 @@ function StudioList({
                 href={`https://www.google.com/maps/dir/?api=1&destination=${studio.latitude},${studio.longitude}`}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-outline btn-sm rounded-full flex-1"
+                className="btn btn-sm rounded-full flex-1"
               >
                 Directions
               </a>

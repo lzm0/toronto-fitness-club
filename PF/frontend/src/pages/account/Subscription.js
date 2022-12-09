@@ -43,15 +43,21 @@ function Subscription() {
         {plan ? (
           <div className="flex flex-col gap-3">
             <div>
-              <h3 className="font-semibold">Plan Name</h3>
+              <h3 className="uppercase text-sm font-semibold opacity-60">
+                Plan Name
+              </h3>
               {plan.name}
             </div>
             <div>
-              <h3 className="font-semibold">Price</h3>${plan.price} per{" "}
-              {plan.is_yearly ? "year" : "month"}
+              <h3 className="uppercase text-sm font-semibold opacity-60">
+                Price
+              </h3>
+              ${plan.price} per {plan.is_yearly ? "year" : "month"}
             </div>
             <div>
-              <h3 className="font-semibold">Start Date</h3>
+              <h3 className="uppercase text-sm font-semibold opacity-60">
+                Start Date
+              </h3>
               {planStartDate}
             </div>
           </div>

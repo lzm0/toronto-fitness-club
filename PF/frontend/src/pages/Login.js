@@ -34,7 +34,7 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-primary">
+    <div className="h-screen -translate-y-12 flex items-center justify-center bg-primary">
       <div className="card bg-base-100">
         <div className="card-body">
           <h1 className="card-title">Welcome back</h1>
@@ -60,7 +60,11 @@ function Login() {
               />
             </div>
             <div className="form-control mt-4 mb-2">
-              <input type="submit" value="Log in" className="btn btn-primary" />
+              <input
+                type="submit"
+                value="Log in"
+                className="btn btn-secondary"
+              />
             </div>
             <div className="text-center">
               <span className="label-text">

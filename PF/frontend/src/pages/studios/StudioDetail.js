@@ -32,7 +32,7 @@ function StudioDetail() {
   }, [studio]);
 
   return studio ? (
-    <div className="flex justify-center p-4">
+    <div className="flex justify-center p-4 bg-base-200">
       <div className="flex flex-col gap-4 grow justify-items-stretch max-w-xl min-w-0">
         <div className="card bg-base-100 overflow-hidden">
           <StudioCarousel images={studio.images} />
@@ -44,7 +44,7 @@ function StudioDetail() {
               <div className="opacity-60">{studio.address}</div>
               <div className="opacity-60">{studio.postal_code}</div>
               <div className="opacity-60">{studio.phone_number}</div>
-              <div className="flex flex-wrap gap-1 my-2">
+              <div className="flex flex-wrap gap-1 mt-2">
                 {studio.amenities.map((amenity) => (
                   <div key={amenity.type} className="badge badge-secondary">
                     {amenity.type}
@@ -57,7 +57,7 @@ function StudioDetail() {
                 href={`https://www.google.com/maps/dir/?api=1&destination=${studio.latitude},${studio.longitude}`}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-outline btn-sm rounded-full flex-1"
+                className="btn btn-sm rounded-full flex-1"
               >
                 Directions
               </a>

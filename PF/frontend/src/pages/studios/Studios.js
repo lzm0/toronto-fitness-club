@@ -13,17 +13,27 @@ function Studios() {
   const [zoom, setZoom] = useState(12);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
-      setMyPosition({ lat, lng });
-      setCenter({ lat, lng });
-      setSearchParams((searchParams) => ({
-        ...searchParams,
-        latitude: lat,
-        longitude: lng,
-      }));
-    });
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        setMyPosition({ lat, lng });
+        setCenter({ lat, lng });
+        setSearchParams((searchParams) => ({
+          ...searchParams,
+          latitude: lat,
+          longitude: lng,
+        }));
+      },
+      (error) => {
+        console.log(error);
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 5000,
+        maximumAge: Infinity,
+      }
+    );
   }, []);
 
   const centerStudio = (studio) => {
@@ -68,7 +78,7 @@ function Studios() {
             myPosition={myPosition}
           />
         </div>
-        <div className="card bg-base-100 overflow-hidden h-96">
+        <div className="card bg-base-100 h-96 overflow-hidden isolate">
           <StudioMap
             studios={studios}
             setSelectedStudio={(studio) => {

@@ -10,11 +10,15 @@ function PaymentMethod({ card }) {
           {card.card_number ? (
             <div className="flex flex-col gap-3">
               <div>
-                <div className="font-semibold">Credit Card</div>
+                <div className="uppercase text-sm font-semibold opacity-60">
+                  Credit Card
+                </div>
                 {card.card_number}
               </div>
               <div>
-                <div className="font-semibold">Expiry Date</div>
+                <div className="uppercase text-sm font-semibold opacity-60">
+                  Expiry Date
+                </div>
                 {card.expiry_date}
               </div>
             </div>
