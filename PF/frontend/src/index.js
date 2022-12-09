@@ -2,15 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import Account from "./pages/account/Account";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Account from "./pages/account/Account";
 
 import Root from "./pages/Root";
 import Signup from "./pages/Signup";
 
 import AuthRoute from "./components/AuthRoute";
+import Plans from "./pages/plans/Plans";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "plans",
+        element: (
+          <AuthRoute>
+            <Plans />
+          </AuthRoute>
+        ),
       },
     ],
     errorElement: <ErrorPage />,

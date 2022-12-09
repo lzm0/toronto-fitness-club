@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EditButton from "../../../components/EditButton";
 
-function EditProfile({ user }) {
+function UpdateCard() {
   const navigate = useNavigate();
 
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -10,18 +10,16 @@ function EditProfile({ user }) {
   const handleSave = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    fetch(`http://${window.location.hostname}:8000/api/profile/`, {
-      method: "PATCH",
+    fetch(`http://${window.location.hostname}:8000/api/profile/card/`, {
+      method: "PUT",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
       body: formData,
-    })
-      .then((response) => response.json())
-      .then(() => {
-        setModalVisibility(false);
-        navigate(0);
-      });
+    }).then(() => {
+      setModalVisibility(false);
+      navigate(0);
+    });
   };
 
   return (
@@ -33,65 +31,37 @@ function EditProfile({ user }) {
         }
       >
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Edit Profile</h3>
+          <h3 className="font-bold text-lg">Edit Card</h3>
           <form onSubmit={handleSave}>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Username</span>
+                <span className="label-text">Card number</span>
               </label>
               <input
                 type="text"
-                name="username"
+                name="card_number"
                 className="input input-bordered invalid:input-error"
-                defaultValue={user.username}
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                className="input input-bordered invalid:input-error"
-                defaultValue={user.email}
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">First name</span>
+                <span className="label-text">Expiry date</span>
               </label>
               <input
                 type="text"
-                name="first_name"
+                name="expiry_date"
                 className="input input-bordered invalid:input-error"
-                defaultValue={user.first_name}
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Last name</span>
+                <span className="label-text">CVV</span>
               </label>
               <input
                 type="text"
-                name="last_name"
+                name="cvv"
                 className="input input-bordered invalid:input-error"
-                defaultValue={user.last_name}
               />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Phone number</span>
-              </label>
-              <label className="input-group">
-                <span>+1</span>
-                <input
-                  type="tel"
-                  name="phone_number"
-                  className="input input-bordered invalid:input-error"
-                  defaultValue={user.phone_number}
-                />
-              </label>
             </div>
             <div className="modal-action">
               <button
@@ -111,4 +81,4 @@ function EditProfile({ user }) {
   );
 }
 
-export default EditProfile;
+export default UpdateCard;

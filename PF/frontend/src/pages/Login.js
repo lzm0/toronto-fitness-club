@@ -29,8 +29,8 @@ function Login() {
         }
       })
       .then(() => {
-        navigate("/account");
-      });
+        navigate(-2);
+      }, []);
   };
 
   return (
