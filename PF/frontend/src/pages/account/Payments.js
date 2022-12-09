@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Payments({ card }) {
+function Payments() {
   const [payments, setPayments] = useState(null);
   const [nextPage, setNextPage] = useState(null);
   const [previousPage, setPreviousPage] = useState(null);
@@ -59,7 +59,6 @@ function Payments({ card }) {
                 <th>Date</th>
                 <th>Amount</th>
                 <th>Paid</th>
-                <th>Payment Method</th>
               </tr>
             </thead>
             <tbody>
@@ -70,7 +69,6 @@ function Payments({ card }) {
                     <td>{payment.date}</td>
                     <td>${payment.amount}</td>
                     <td>{payment.paid ? "Yes" : "No"}</td>
-                    <td>{card.card_number}</td>
                   </tr>
                 ))}
             </tbody>

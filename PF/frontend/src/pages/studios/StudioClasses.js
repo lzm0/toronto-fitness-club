@@ -1,26 +1,72 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ScheduleActionButton from "./ScheduleActionButton";
 import ScheduleDetail from "./ScheduleDetail";
 
-function StudioClasses({ studio }) {
+function StudioClasses({ studio, searchParams }) {
   const [schedules, setSchedules] = useState([]);
-  // const [page, setPage] = useState(1);
+  const [nextPage, setNextPage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchPage = useCallback(
+    (page) => {
+      fetch(
+        `http://${window.location.hostname}:8000/api/studios/${
+          studio.id
+        }/schedules/?page=${page}${
+          Object.keys(searchParams).length > 0
+            ? `&${new URLSearchParams(searchParams)}`
+            : ""
+        }`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (page === 1) {
+            setSchedules(data.results);
+          } else {
+            setSchedules((schedules) => [...schedules, ...data.results]);
+          }
+          if (data.next) {
+            setNextPage(page + 1);
+          } else {
+            setNextPage(null);
+          }
+          setIsLoading(false);
+        });
+    },
+    [studio, searchParams]
+  );
 
   useEffect(() => {
-    fetch(
-      `http://${window.location.hostname}:8000/api/studios/${studio.id}/schedules/`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
+    fetchPage(1);
+  }, [fetchPage, searchParams]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        !isLoading &&
+        nextPage &&
+        window.innerHeight + document.documentElement.scrollTop + 200 >=
+          document.documentElement.offsetHeight
+      ) {
+        setIsLoading(true);
+        fetchPage(nextPage);
       }
-    )
-      .then((response) => response.json())
-      .then((data) => setSchedules(data.results));
-  }, [studio]);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [fetchPage, isLoading, nextPage]);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col">
       {schedules.map((schedule, index) => {
         return (
           schedule.fitness_class && (
@@ -29,11 +75,18 @@ function StudioClasses({ studio }) {
                 <ScheduleDetail schedule={schedule} />
                 <ScheduleActionButton studio={studio} schedule={schedule} />
               </div>
-              {index !== schedules.length - 1 && <div className="divider" />}
+              {index !== schedules.length - 1 && (
+                <div className="divider"></div>
+              )}
             </div>
           )
         );
       })}
+      {isLoading && (
+        <div className="flex justify-center">
+          <div className="loading btn btn-ghost">Loading</div>
+        </div>
+      )}
     </div>
   );
 }

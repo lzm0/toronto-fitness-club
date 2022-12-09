@@ -8,7 +8,6 @@ import Classes from "./Classes";
 
 function Account() {
   const [user, setUser] = useState(null);
-  const [card, setCard] = useState(null);
 
   useEffect(() => {
     fetch(`http://${window.location.hostname}:8000/api/profile/`, {
@@ -20,16 +19,6 @@ function Account() {
       .then(setUser);
   }, []);
 
-  useEffect(() => {
-    fetch(`http://${window.location.hostname}:8000/api/profile/card/`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-      },
-    })
-      .then((response) => response.json())
-      .then(setCard);
-  }, []);
-
   return (
     user && (
       <div className="flex justify-center p-4">
@@ -37,8 +26,8 @@ function Account() {
           <Profile user={user} />
           <Classes />
           <Subscription />
-          <PaymentMethod card={card} />
-          <Payments card={card} />
+          <PaymentMethod />
+          <Payments />
           <LogoutButton />
         </div>
       </div>

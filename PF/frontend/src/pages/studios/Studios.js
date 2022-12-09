@@ -44,10 +44,8 @@ function Studios() {
   useEffect(() => {
     fetch(
       `http://${window.location.hostname}:8000/api/studios/${
-        Object.keys(searchParams).length > 0 ? "?" : ""
-      }${Object.keys(searchParams)
-        .map((key) => `${key}=${searchParams[key]}`)
-        .join("&")}`,
+        searchParams ? `?${new URLSearchParams(searchParams)}` : ""
+      }`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,

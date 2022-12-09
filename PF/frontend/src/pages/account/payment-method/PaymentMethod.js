@@ -1,7 +1,20 @@
 import UpdateCard from "./EditCard";
 import DeleteCard from "./DeleteCard";
+import { useEffect, useState } from "react";
 
-function PaymentMethod({ card }) {
+function PaymentMethod() {
+  const [card, setCard] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://${window.location.hostname}:8000/api/profile/card/`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(setCard);
+  }, []);
+
   return (
     card && (
       <div className="card bg-base-100">

@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import StudioCarousel from "./StudioCarousel";
 import StudioClasses from "./StudioClasses";
+import StudioClassesSearch from "./StudioClassesSearch";
 
 export function loader({ params }) {
   return fetch(
@@ -15,6 +17,8 @@ export function loader({ params }) {
 
 function StudioDetail() {
   const studio = useLoaderData();
+
+  const [searchParams, setSearchParams] = useState({});
 
   return studio ? (
     <div className="flex justify-center p-4 bg-base-200">
@@ -52,7 +56,11 @@ function StudioDetail() {
         <div className="card bg-base-100">
           <div className="card-body">
             <h3 className="card-title">Classes</h3>
-            <StudioClasses studio={studio} />
+            <StudioClassesSearch
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+            />
+            <StudioClasses studio={studio} searchParams={searchParams} />
           </div>
         </div>
       </div>
