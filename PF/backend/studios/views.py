@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from studios.models import Studio, FitnessClass, ClassSchedule
-from studios.serializers import StudioSerializer, StudioDetailSerializer, \
+from studios.serializers import StudioDetailSerializer, \
     ClassScheduleSerializer, \
     FitnessClassSerializer
 
@@ -36,7 +36,7 @@ class StudioViewSet(
         rest_framework_simplejwt.authentication.JWTAuthentication,
         rest_framework.authentication.SessionAuthentication,
     ]
-    serializer_class = StudioSerializer
+    serializer_class = StudioDetailSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
