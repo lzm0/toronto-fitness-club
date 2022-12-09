@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="navbar bg-primary text-primary-content sticky top-0 z-50">
-      <div className="navbar-start"></div>
-      <div className="navbar-center">
+      <div className="hidden sm:block sm:navbar-start"></div>
+      <div className="navbar-start sm:navbar-center justify-start sm:justify-center">
         <Link to="/" className="btn btn-ghost normal-case text-2xl font-black">
           <svg
             className="w-[1.2rem] h-[1.2rem] mr-1"
@@ -19,8 +19,8 @@ function Navbar() {
         </Link>
       </div>
       <div className="navbar-end">
-        <Link to="/studios" className="btn btn-ghost btn-circle">
-          <MagnifyingGlassIcon className="w-5 h-5" />
+        <Link to="/studios" className="btn btn-ghost">
+          Find a Studio
         </Link>
         <Link to="/account" className="btn btn-ghost btn-circle">
           <UserCircleIcon className="w-5 h-5" />
