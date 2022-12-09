@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from studios.models import Studio, FitnessClass, ClassSchedule
 from studios.serializers import StudioDetailSerializer, \
     ClassScheduleSerializer, \
-    FitnessClassSerializer
+    FitnessClassSerializer, UserClassScheduleSerializer
 
 from math import cos, sqrt, asin, pi
 
@@ -289,6 +289,6 @@ class UserScheduleListView(APIView, PageNumberPagination):
             fitness_class__in=classes, start_time__gte=timezone.now())
         schedules = schedules.order_by('start_time')
         page = self.paginate_queryset(schedules, request)
-        serializer = ClassScheduleSerializer(page, many=True,
-                                             context={'request': request})
+        serializer = UserClassScheduleSerializer(page, many=True,
+                                                 context={'request': request})
         return self.get_paginated_response(serializer.data)
