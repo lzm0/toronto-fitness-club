@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="navbar bg-primary text-primary-content sticky top-0 z-50">
+    <nav className="navbar bg-primary/80 backdrop-blur text-primary-content sticky top-0 z-50">
       <div className="hidden sm:block sm:navbar-start"></div>
       <div className="navbar-start sm:navbar-center justify-start sm:justify-center">
         <Link to="/" className="btn btn-ghost normal-case text-2xl font-black">
