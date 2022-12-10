@@ -21,11 +21,7 @@ function MeMarker({ onClick }) {
 
 function StudioMap({ studios, setSelectedStudio, center, zoom, myPosition }) {
   return (
-    <GoogleMapReact
-      bootstrapURLKeys={{ key: "AIzaSyA3aaUdnykJW4lv_6nDKn1dJgT6tSm1MXc" }}
-      center={center}
-      zoom={zoom}
-    >
+    <GoogleMapReact bootstrapURLKeys={{ key: "" }} center={center} zoom={zoom}>
       {studios.map((studio) => (
         <Marker
           key={studio.id}
